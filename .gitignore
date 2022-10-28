@@ -211,11 +211,12 @@ $RECYCLE.BIN/
 *.exe
 *.txt
 *.hwp
+*.xmind
+*.pptx
 .env.*
 *.sql
 data.json
 backend/
-00-clone-coding/
 00-data/
 00-temporary/
 04-react/##-data/
