@@ -1,2 +1,0 @@
-# EZEN-Academy
-EZEN Academy
