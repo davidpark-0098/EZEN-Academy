@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>History 객체</h1>
+    <h2 id="datetime"></h2>
+    <a href="#" id="link1">이전 페이지로 이동</a>
+    <a href="#" id="link2">앞 페이지로 이동</a>
+    <a href="#" id="link3">시간 갱신</a>
+
+    <hr>
+
+    <a href="01-window.html">1번 예제로 이동</a>
+
+    <script>
+        document.querySelector("#datetime").innerHTML = new Date();
+
+        document.querySelector("#link1").addEventListener("click", e => {
+            e.preventDefault();
+            history.back();
+        });
+
+        document.querySelector("#link2").addEventListener("click", e => {
+            e.preventDefault();
+            history.forward();
+        });
+
+        let counter = 0;
+
+        document.querySelector("#link3").addEventListener("click", e => {
+            e.preventDefault();
+
+            counter++;
+
+            const date = new Date();
+            document.querySelector("#datetime").innerHTML = date;
+
+            const state = {'counter': counter, 'time': date.getTime()};
+            const title = '가상페이지:::' + counter;
+            const url = '07-history.html#' + counter;
+
+            history.pushState(state, title, url);
+        });
+
+        window.addEventListener("popstate", e => {
+            console.log(e.state);
+
+            const date = new Date();
+            date.setTime(Number(e.state.time));
+
+            document.querySelector("#datetime").innerHTML = date;
+        });
+    </script>
+</body>
+</html>
