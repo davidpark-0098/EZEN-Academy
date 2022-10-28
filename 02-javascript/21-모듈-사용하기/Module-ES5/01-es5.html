@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ES5 style 모듈 사용</h1>
+
+    <script>
+        const x = 100;
+    </script>
+
+    <script>
+        const y = 200;
+    </script>
+
+    <script>
+        console.log(x + y);
+    </script>
+
+    <script src="./MyModule1.js"></script>
+    <script src="./MyModule2.js"></script>
+    <script src="./MyModule3.js"></script>
+    <script src="./MyModule4.js"></script>
+
+    <script>
+        console.group('MyModule1');
+        helloWorld();
+        console.groupEnd();
+
+        console.group('MyModule2');
+        console.log(name);
+        console.log(property.id);
+        console.log(property.type);
+        say();
+        console.log(home.postcode);
+        console.log(home.address);
+        home.getAddress();
+        console.groupEnd();
+
+        console.group('MyModule3');
+        const module3 = new MyClass();
+        module3.say();
+        console.groupEnd();
+
+        console.group('MyModule4');
+        hw.say();
+        console.groupEnd();
+    </script>
+</body>
+</html>

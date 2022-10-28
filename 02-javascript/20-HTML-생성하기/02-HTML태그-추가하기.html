@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        li {
+            padding: 5px 10px;
+            cursor: pointer;
+            border-bottom: 1px dotted #d5d5d5;
+        }
+
+        li:first-child {
+            border-top: 1px dotted #d5d5d5;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="comment">
+    <button type="button" id="beforebegin">beforebegin</button>
+    <button type="button" id="afterend">afterend</button>
+    <button type="button" id="afterbegin">afterbegin</button>
+    <button type="button" id="beforeend">beforeend</button>
+    <hr/>
+
+    <ul id="list">
+
+    </ul>
+
+    <script>
+        function remove(target) {
+            target.remove();
+        }
+
+        const list = document.querySelector('#list');
+
+        const comment = document.querySelector('#comment');
+
+        document.querySelector('#beforebegin').addEventListener('click', e => {
+            list.insertAdjacentHTML('beforebegin', "<p class='item beforebegin' onclick='remove(this)'>" + comment.value + "</p>");
+        });
+
+        document.querySelector('#afterend').addEventListener('click', e => {
+            list.insertAdjacentHTML('afterend', "<p class='item afterend' onclick='remove(this)'>" + comment.value + "</p>");
+        });
+
+        document.querySelector('#afterbegin').addEventListener('click', e => {
+            list.insertAdjacentHTML('afterbegin', "<li class='item afterbegin' onclick='remove(this)'>" + comment.value + "</li>");
+        });
+
+        document.querySelector('#beforeend').addEventListener('click', e => {
+            list.insertAdjacentHTML('beforeend', "<li class='item afterbegin' onclick='remove(this)'>" + comment.value + "</li>");
+        });
+    </script>
+</body>
+</html>

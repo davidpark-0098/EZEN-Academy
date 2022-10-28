@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Info</h1>
+
+    <hr>
+
+    <ul id="list">
+
+    </ul>
+
+    <script type="module">
+        import ajaxHelper from './helper/AjaxHelper.js';
+        import utilHelper from './helper/UtilHelper.js';
+
+        const params = utilHelper.getUrlParams();
+        console.log(params);
+
+        (async () => {
+            let json = null;
+
+            try {
+                json = await ajaxHelper.requestAsync(`http://localhost:3001/student/${params.id}`);
+            } catch (e) {
+                console.error(e);
+                alert(`${e.status} ${e.text}\n${e.msg}`);
+                return;
+            }
+
+            for (const key in json) {
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${key}</strong>: ${json[key]}`;
+                document.querySelector('#list').appendChild(li);
+            }
+        })();
+    </script>
+</body>
+</html>

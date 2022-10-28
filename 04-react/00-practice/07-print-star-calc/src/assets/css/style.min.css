@@ -1,0 +1,1 @@
+a{font-size:20px;cursor:pointer;text-decoration:none;padding-bottom:2px;color:#222}a:hover{color:#22b8cf}a:after{content:"|";display:inilne-block;padding:0 7px;color:#ccc}a:last-child:after{color:#fff}a.active{text-decoration:underline;color:#22b8cf}a.active:after{border-bottom:4px solid #fff !important}/*# sourceMappingURL=style.min.css.map */

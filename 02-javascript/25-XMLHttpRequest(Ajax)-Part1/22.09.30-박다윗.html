@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            a:hover {
+                color: blue;
+            }
+
+            table {
+                text-align: center;
+            }
+
+            #loagind {
+                width: 100px;
+                height: 100px;
+                background: url(img/loading.gif) no-repeat center / cover;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                display: none;
+            }
+
+            #loading.active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Student List</h1>
+        <div id="loading"></div>
+        <button type="button" id="btn">데이터 가져오기</button>
+
+        <hr />
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>학생번호</th>
+                    <th>이름</th>
+                    <th>학년</th>
+                    <th>연락처</th>
+                </tr>
+            </thead>
+            <tbody id="list-body"></tbody>
+        </table>
+
+        <script type="module">
+            import ajaxHelper from "./helper/AjaxHelper.js";
+
+            document.querySelector("#btn").addEventListener("click", async (e) => {
+                const loading = document.querySelector("#loading");
+                loading.classList.add("active");
+
+                let json = null;
+                console.log(json ?? "로딩중");
+                try {
+                    json = await ajaxHelper.requestAsync("http://localhost:3001/student");
+                } catch (e) {
+                    console.error(e);
+                    alert(`${e.status} ${e.text}\n${e.msg}`);
+                    return;
+                } finally {
+                    console.log(json && "로딩완료");
+                    loading.classList.remove("active");
+                }
+
+                json.forEach((v, i) => {
+                    const tr = document.createElement("tr");
+
+                    const td1 = document.createElement("td");
+                    td1.innerHTML = v.id;
+
+                    const td2 = document.createElement("td");
+                    const a = document.createElement("a");
+                    a.setAttribute("href", `student_info.html?id=${v.id}`);
+                    td2.appendChild(a);
+                    a.innerHTML = v.name;
+
+                    const td3 = document.createElement("td");
+                    td3.innerHTML = v.grade;
+
+                    const td4 = document.createElement("td");
+                    td4.innerHTML = v.tel;
+
+                    tr.appendChild(td1);
+                    tr.appendChild(td2);
+                    tr.appendChild(td3);
+                    tr.appendChild(td4);
+
+                    document.querySelector("#list-body").appendChild(tr);
+                });
+            });
+        </script>
+    </body>
+</html>

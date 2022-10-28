@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://www.naver.com" id="myform">
+        <div>
+            <label for="username">사용자이름</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div>
+            <label for="userpass">비밀번호</label>
+            <input type="password" name="userpass" id="userpass">
+        </div>
+
+        <button type="submit" id="btn">입력값 확인</button>
+        <hr>
+        <div id="result"></div>
+    </form>
+
+    <script type="module">
+        const myform = document.querySelector('#myform');
+        myform.addEventListener('submit', e => {
+            e.preventDefault();
+
+            const username = document.querySelector('#username');
+            const userpass = document.querySelector('#userpass');
+
+            if (!username.value) {
+                alert("사용자 이름을 입력하세요.");
+                username.focus();
+                return;
+            }
+            if (!userpass.value) {
+                alert("비밀번호를 입력하세요.");
+                userpass.focus();
+                return;
+            }
+
+            document.querySelector('#result').innerHTML = "사용자이름: " + username.value + "<br/>비밀번호: " + userpass.value;
+        })
+
+    </script>
+</body>
+</html>

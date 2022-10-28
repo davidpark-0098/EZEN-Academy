@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #file-input {
+            display: none;
+        }
+
+        .image-upload label {
+            cursor: pointer;
+        }
+
+        #preview-container:after {
+            content: '';
+            clear: both;
+            display: block;
+            float: none;
+        }
+
+        div.preview {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border: 1px solid #d5d5d5;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-upload">
+        <label for="file-input">
+            <img src="img/upload.jpg" alt="">
+        </label>
+
+        <input type="file" id="file-input" multiple>
+    </div>
+
+    <div id="preview-container"></div>
+
+    <script type="module">
+        document.querySelector('#file-input').addEventListener('change', e => {
+            const previewContainer = document.querySelector('#preview-container');
+
+            previewContainer.innerHTML = '';
+
+            const file = e.currentTarget.files;
+            console.log(file);
+
+            Array.from(file).forEach((v, i) => {
+                console.log(v);
+
+                const img = URL.createObjectURL(v);
+
+                const div = document.createElement('div');
+                div.classList.add('preview');
+                div.style.backgroundImage = 'url(' + img + ')';
+
+                previewContainer.appendChild(div);
+            });
+        });
+    </script>
+</body>
+</html>

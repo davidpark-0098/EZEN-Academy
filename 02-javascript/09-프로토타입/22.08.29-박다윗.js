@@ -1,0 +1,150 @@
+"use strict";
+
+// 문제1.
+const student = function (ko, en, math) {
+    this._ko = ko;
+    this._en = en;
+    this._math = math;
+};
+
+student.prototype = {
+    get ko() {
+        return this._ko;
+    },
+    set ko(ko) {
+        this._ko = ko;
+    },
+    get en() {
+        return this._en;
+    },
+    set en(en) {
+        this._en = en;
+    },
+    get math() {
+        return this._math;
+    },
+    set math(math) {
+        this._math = math;
+    },
+
+    sum: function() {
+        return this.ko + this.en + this.math;
+    },
+    avg: function() {
+        return (this.ko + this.en + this.math) / 3;
+    }
+};
+
+const score1 = new student(92, 81, 77);
+console.log(`철수의 총점은 ${score1.sum()}점 이고 평균은 ${score1.avg()}점 입니다.`);
+
+const score2 = new student(72, 95, 98);
+console.log(`영희의 총점은 ${score2.sum()}점 이고 평균은 ${score2.avg()}점 입니다.`);
+
+const score3 = new student(80, 86, 84);
+console.log(`민혁의 총점은 ${score3.sum()}점 이고 평균은 ${score3.avg()}점 입니다.`);
+
+// 문제2.
+const Rectangle = function() {
+    this._width = null;
+    this._height = null;
+};
+
+Rectangle.prototype = {
+    get width() {
+        return this._width;
+    },
+    set width(width) {
+        this._width = width;
+    },
+    get height() {
+        return this._height;
+    },
+    set height(height) {
+        this._height = height;
+    },
+
+    getAround: function() {
+        return (this.width + this.height) * 2;
+    },
+    getArea: function() {
+        return this.width * this.height;
+    }
+};
+
+const a = new Rectangle();
+a.width = 10;
+a.height = 5;
+console.log(`둘레의 길이는 ${a.getAround()}이고 넓이는 ${a.getArea()}입니다.`);
+
+// 문제3.
+function Student(maj, num) {
+    this._maj = maj;
+    this._num = num;
+}
+
+Student.prototype = {
+    get maj() {
+        return this._maj;
+    },
+    set maj(p) {
+        return this._maj = p;
+    },
+    get num() {
+        return this._num;
+    },
+    set num(p) {
+        return this._num = p;
+    },
+
+    sayHello: function() {
+        console.log(`나는 ${this.maj}학과 ${this.num}학번 입니다.`);
+    }
+};
+
+const stud = new Student("컴퓨터", 202004123);
+stud.sayHello();
+
+// 문제4.
+function Account(owner, balance) {
+    this._owner = owner;
+    this._balance = balance;
+}
+
+Account.prototype = {
+    get owner() {
+        return this._owner;
+    },
+    set owner(p) {
+        return this._owner = p;
+    },
+    get balance() {
+        return this._balance;
+    },
+    set balance(p) {
+        return this._balance = p;
+    },
+
+    deposit: function(a) {
+        this.balance = this.balance + a;
+    },
+    withdraw: function(a) {
+        if (this._balance - a < 0) {
+            console.log(`잔액이 부족합니다.`);
+            return;
+        } else {
+            this.balance = this.balance - a;
+        }
+    }
+};
+
+const acc = new Account("Hello", 15000);
+console.log("%s의 잔액은 %d원", acc.owner, acc.balance);
+acc.deposit(5000);
+console.log("%s의 잔액은 %d원", acc.owner, acc.balance);
+acc.withdraw(15000);
+console.log("%s의 잔액은 %d원", acc.owner, acc.balance);
+acc.deposit(5000);
+console.log("%s의 잔액은 %d원", acc.owner, acc.balance);
+acc.withdraw(15000);
+console.log("%s의 잔액은 %d원", acc.owner, acc.balance);

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>window 객체</h1>
+    <h3>open 메소드 확인</h3>
+    <div>
+        <a href="#" id="link1">새 창 열기</a>
+        <br>
+        <a href="#" id="link2">팝업 창 열기(1)</a>
+        <br>
+        <a href="#" id="link3">팝업 창열기(2-1)</a>
+        <br>
+        <a href="#" id="link4">팝업 창 열기(2-2)</a>
+        <br>
+    </div>
+
+    <script type="text/javascript">
+        document.querySelector('#link1').addEventListener("click", e => {
+            e.preventDefault();
+
+            window.open('open.html');
+        });
+
+        document.querySelector('#link2').addEventListener('click', e => {
+            e.preventDefault();
+
+            const popup = window.open('open.html', '', 'width=300, height=500, scriollbars=no, toolbar=no, menubar=no, status=no, location=no');
+
+            if(!popup) {
+                alert("팝업 차단을 해제해 주세요.");
+            } else {
+                popup.focus();
+            }
+        });
+
+        document.querySelector('#link3').addEventListener('click', e => {
+            e.preventDefault();
+
+            window.open('https://www.naver.com', 'mywin', 'width=300, height=500, scriollbars=no, toolbar=no, menubar=no, status=no, location=no');
+        });
+        document.querySelector('#link4').addEventListener('click', e => {
+            e.preventDefault();
+
+            window.open('https://www.daum.net', 'mywin', 'width=300, height=500, scriollbars=no, toolbar=no, menubar=no, status=no, location=no');
+        }); 
+
+    </script>
+</body>
+</html>
