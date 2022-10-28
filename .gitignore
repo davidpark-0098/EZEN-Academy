@@ -205,13 +205,13 @@ $RECYCLE.BIN/
 *.pdf
 *.png
 *.jpg
-*.md
 *.7z
 *.zip
 00-clone-coding/
 00-data/
 00-exam/
 00-temporary
+# *.md
 
 ### 확장자가 없는 경우에도 .gitignore를 적용할 수 있다.
 # *
