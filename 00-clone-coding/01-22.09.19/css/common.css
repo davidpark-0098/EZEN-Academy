@@ -1,0 +1,265 @@
+@charset "utf-8";
+
+body {
+    font-family: "Times New Roman", Georgia, Serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 5px;
+}
+
+a {text-decoration: none;}
+/* #f5f5f5 #dbdbdb black white #5b5b5b */
+
+/* nav */
+nav {
+    width: 100%;
+    height: 55px;
+    background-color: #f5f5f5;
+    box-shadow: 0 5px 80px 10px gray;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 5000;
+}
+
+#nav_top {
+    width: 240px;
+    height: 39px;
+}
+
+#nav_top a {
+    display: block;
+    text-align: center;
+    line-height: 39px;
+    letter-spacing: 3px;
+    color: black;
+    transition-duration: 350ms;
+}
+
+#nav_top a:hover {
+    background-color: #dbdbdb;
+}
+
+#nav_sub {
+    display: flex;
+    width: 270px;
+    height: 39px;
+    text-align: center;
+    padding: 8px 16px;
+}
+
+#nav_sub > a {
+    width: 90px;
+    height: 39px;
+    line-height: 39px;
+    letter-spacing: 3px;
+    color: black;
+    transition-duration: 350ms;
+}
+
+#nav_sub a:hover {
+    background-color: #dbdbdb;
+}
+
+/* header */
+header {
+    width: 1600px;
+    height: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+header > div {
+    width: 290px;
+    height: 100px;
+    padding: 12px 24px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+}
+
+header h1 {
+    margin: 10px 0;
+    font-size: 36px;
+    text-align: center;
+    line-height: 56px;
+    color: #5b5b5b;
+}
+
+/* wrap */
+#wrap {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+/* about catering */
+#about_catering {
+    height: 780px;
+    padding: 64px 0;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#about_catering_img {
+    width: 550px;
+    height: 652px;
+    padding: 12px 24px;
+    box-sizing: border-box;
+}
+
+#about_catering_img img {
+    width: 502px;
+    height: 628px;
+    opacity: 0.85;
+}
+
+#about_catering_text {
+    width: 550px;
+    height: 652px;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#about_catering_text h1 {
+    font-size: 36px;
+    margin: 10px 0;
+}
+
+#about_catering_text h5 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+#about_catering_text p {
+    font-size: 18px;
+    margin: 18px 0;
+    line-height: 28px;
+}
+
+#about_catering_text span {
+    background-color: rgba(0, 0, 0, 0.116);
+}
+
+/* hr */
+hr {
+    margin: 20px 0;
+    border: 1px solid #dbdbdb77;
+}
+
+/* our menu */
+#our_menu {
+    height: 910px;
+    padding: 64px 0;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#our_menu div {
+    width: 550px;
+    padding: 12px 24px;
+    box-sizing: border-box;
+}
+
+#our_menu_text h1 {
+    font-size: 36px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+#our_menu_text h4 {
+    font-size: 20px;
+    margin: 10px 0;
+    letter-spacing: 3px;
+}
+
+#our_menu_text p {
+    font-size: 15px;
+    margin: 15px 0;
+    color: #5b5b5b;
+}
+
+#our_menu_img img {
+    opacity: 0.85;
+}
+
+/* contact */
+#contact {
+    height: 810px;
+    padding: 64px 16px;
+    box-sizing: border-box;
+}
+
+#contact h1 {
+    font-size: 36px;    
+    margin: 10px 0;
+}
+
+#contact p {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    line-height: 24px;
+}
+
+#strong {
+    margin: 18px 0;
+}
+
+#strong b {
+    font-size: 18px;
+    color: #607b82;
+    font-weight: bold;
+}
+
+#contact input {
+    width: 100%;
+    padding: 16px 8px;
+    border: none;
+    color: black;
+}
+
+input::placeholder {
+    color: #5b5b5ba8;
+}
+
+form > p {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+button {
+    width: 150px;
+    height: 40px;
+    margin: 16px 0;
+    padding: 8px 16px;
+    background-color: #dbdbdb41;
+    border: none;
+    cursor: pointer;
+    transition-duration: 350ms;
+}
+
+button:hover {
+    background-color: #dbdbdb;
+}
+
+/* footer */
+footer {
+    width: 100%;
+    height: 116px;
+    padding: 32px 0;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 52px;
+    background-color: #f1f1f1;
+}
+
+footer a {
+    color: black;
+    text-decoration: underline;
+}
