@@ -21,27 +21,6 @@ const GlobalStyles = createGlobalStyle`
     $choose: #ccc;
     $notchoose: #616161;
 
-    $breakpoint-mobile: 335px;
-    $breakpoint-tablet: 758px;
-    $breakpoint-desktop: 1024px;
-
-    @mixin mobile {
-        @media (max-width: #{$breakpoint-tablet - 1px}) {
-            @content;
-        }
-    }
-
-    @mixin tablet {
-        @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
-            @content;
-        }
-    }
-
-    @mixin desktop {
-        @media (min-width: #{$breakpoint-desktop}) {
-            @content;
-        }
-    }
 
 
 `;

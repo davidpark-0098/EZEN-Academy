@@ -209,6 +209,7 @@ $RECYCLE.BIN/
 *.7z
 *.zip
 *.txt
+*.hwp
 00-clone-coding/
 00-data/
 00-exam/
