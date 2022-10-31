@@ -9,7 +9,6 @@ function App() {
     return (
         <div>
             <Header/>
-            <hr />
             <Routes>
                 <Route path="/" element={<Main />} />
             </Routes>

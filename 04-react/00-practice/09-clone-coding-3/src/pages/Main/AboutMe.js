@@ -2,9 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const AboutContainer = styled.section`
-    width: 1200px;
-    margin: 100px auto 0;
-    padding: 8px 16px;
+    max-width: 1200px;
+    margin: 0 auto;
     box-sizing: border-box;
     text-align: center;
     padding: 32px 16px;
@@ -12,17 +11,22 @@ const AboutContainer = styled.section`
         font-size: 24px;
         margin: 10px 0 32px;
     }
+    figure {
+        max-width: 800px;
+        margin: 0 auto;
+    img {
+        width: 100%;
+    }
+}
     article {
         display: flex;
         flex-direction: column;
         align-items: center;
         box-sizing: border-box;
         padding: 32px 0;
-
         b {
             font-size: 20px;
         }
-
         i {
             margin-top: 20px;
             font-size: 16px;
@@ -39,7 +43,9 @@ const AboutMe = () => {
     return (
         <AboutContainer id="about_me">
             <h3>About Me, The Food Man</h3>
+            <figure>
             <img src="https://www.w3schools.com/w3images/chef.jpg" alt="About Me, The Food Man" />
+            </figure>
             <article>
                 <b>I am Who I Am!</b>
                 <i>With Passion For Real, Good Food</i>

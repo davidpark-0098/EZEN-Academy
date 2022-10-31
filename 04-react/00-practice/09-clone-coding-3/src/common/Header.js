@@ -1,25 +1,22 @@
 import React from "react";
-import { HashLink } from "react-router-hash-link";
 import styled from "styled-components";
 
-import mq from "../MediaQuery";
-
 const HeaderContainer = styled.header`
-    #icon {
-        font-size: 24px;
-        padding: 16px;
-    }
-    width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px;
     height: 68px;
+    margin: 0 auto;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
+    z-index: 1000;
+    position: sticky;
     top: 0;
+
+    #icon {
+        font-size: 24px;
+        padding: 16px;
+    }
 `;
 
 const Header = () => {

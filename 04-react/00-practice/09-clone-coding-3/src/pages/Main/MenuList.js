@@ -1,33 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 import { HashLink } from "react-router-hash-link";
+import mq from "../../MediaQuery";
 
 const MenuListContainer = styled.section`
-    width: 1200px;
-    margin: 100px auto 0;
+    max-width: 1200px;
     padding: 8px 16px;
+    margin: 20px auto 0;
     box-sizing: border-box;
     main {
         width: 100%;
         #main_img {
             width: 100%;
-            height: 1220px;
-            padding: 16px 8px;
+            padding: 8px 16px 0 16px;
             box-sizing: border-box;
 
             .main_img {
                 display: flex;
                 justify-content: space-between;
                 flex-wrap: wrap;
-                padding: 0 8px;
+                padding: 16px 8px;
                 box-sizing: border-box;
             }
 
             figure {
-                width: 272px;
-                height: 622px;
+                width: 25%;
+                padding: 0 8px;
+                box-sizing: border-box;
                 text-align: center;
+                ${mq.maxWidth("sm")`
+                    width: 100%;
 
+                `}
                 img {
                     width: 100%;
                 }
@@ -43,7 +47,6 @@ const MenuListContainer = styled.section`
 
                 p {
                     line-height: 23px;
-
                     span {
                         display: block;
                         margin-top: 14px;
@@ -79,7 +82,7 @@ const MenuListContainer = styled.section`
                         background-color: black;
                     }
                     .choose:hover {
-                        color: black;
+                        color: white;
                         background-color: $line;
                     }
                 }
@@ -147,7 +150,7 @@ const MenuList = () => {
                     <ul>
                         <li>
                             <HashLink href="#" className="slider_left">
-                                왼쪽
+                                «
                             </HashLink>
                         </li>
                         <li>
@@ -172,7 +175,7 @@ const MenuList = () => {
                         </li>
                         <li>
                             <HashLink href="#" className="slider_right">
-                                오른쪽
+                                »
                             </HashLink>
                         </li>
                     </ul>
