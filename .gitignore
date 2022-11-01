@@ -210,6 +210,8 @@ $RECYCLE.BIN/
 *.zip
 *.txt
 *.hwp
+data.json
+backend/
 00-clone-coding/
 00-data/
 00-exam/
