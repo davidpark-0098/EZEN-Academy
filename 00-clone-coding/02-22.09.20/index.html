@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BR Architects</title>
+    <link rel="stylesheet" href="./css/resetCss.css">
+    <link rel="stylesheet" href="./css/common.css">
+
+</head>
+<body>
+    <nav>
+        <div id="nav_top"><a href="#"><b>BR</b> Architects</a></div>
+        <div id="nav_sub">
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+            <img src="https://www.w3schools.com/w3images/architect.jpg" alt="main_img1">
+            <div>
+                <span><b>BR</b></span>
+                <h1>Architects</h1>
+            </div>
+    </header>
+
+    <main>
+        <section id="projects">
+            <h3>Projects</h3>
+            <hr>
+            <section id="projects_img">
+                <article>
+                    <div>
+                        Summer House
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house5.jpg" alt="Summer House">
+                </article>
+                <article>
+                    <div>
+                        Brick House
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house2.jpg" alt="Brick House">
+                </article>
+                <article>
+                    <div>
+                        Renovated
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house3.jpg" alt="Renovated">
+                </article>
+                <article>
+                    <div>
+                        Barn House
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house4.jpg" alt="Barn House">
+                </article>
+                <article>
+                    <div>
+                        Summer House
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house2.jpg" alt="Summer House">
+                </article>
+                <article>
+                    <div>
+                        Brick House
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house5.jpg" alt="Brick House">
+                </article>
+                <article>
+                    <div>
+                        Renovated
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house4.jpg" alt="Renovated">
+                </article>
+                <article>
+                    <div>
+                        Barn House
+                    </div>
+                    <img src="https://www.w3schools.com/w3images/house3.jpg" alt="Barn House">
+                </article>
+            </section>
+        </section>
+
+        <section id="about">
+            <h3>About</h3>
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <section>
+                <article>
+                    <img src="https://www.w3schools.com/w3images/team2.jpg" alt="John Doe">
+                    <h3>John Doe</h3>
+                    <p id="job">CEO & Founder</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <div>
+                        Contact
+                    </div>
+                </article>
+                <article>
+                    <img src="https://www.w3schools.com/w3images/team1.jpg" alt="Jane Doe">
+                    <h3>Jane Doe</h3>
+                    <p id="job">Architect</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <div>
+                        Contact
+                    </div>
+                </article>
+                <article>
+                    <img src="https://www.w3schools.com/w3images/team3.jpg" alt="Mike Ross">
+                    <h3>Mike Ross</h3>
+                    <p id="job">Architect</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <div>
+                        Contact
+                    </div>
+                </article>
+                <article>
+                    <img src="https://www.w3schools.com/w3images/team4.jpg" alt="Dan Star">
+                    <h3>Dan Star</h3>
+                    <p id="job">Architect</p>
+                    <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+                    <div>
+                        Contact
+                    </div>
+                </article>
+            </section>
+        </section>
+
+        <section id="contact">
+            <h3>Contact</h3>
+            <hr>
+            <p>Lets get in touch and talk about your next project.</p>
+            <form id="join_form">
+                <input type="text" placeholder="Name" id="name">
+                <input type="text" placeholder="Email" id="email">
+                <input type="text" placeholder="Subject" id="subject">
+                <input type="text" placeholder="Comment" id="comment">
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </section>
+
+        <section id="main_img2">
+            <img src="https://www.w3schools.com/w3images/map.jpg" alt="city">
+        </section>
+    </main>
+
+    <footer>
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer>
+    <script type="module">
+        import RegexHelper from './helper/RegexHelper.js';
+
+        document.querySelector('#join_form').addEventListener('submit', e => {
+            e.preventDefault();
+
+            const regexHelper = RegexHelper.getInstance();
+
+            try {
+                regexHelper.value(document.querySelector('#name'), '이름을 입력하세요.');
+                regexHelper.value(document.querySelector('#email'), '이메일을 입력하세요.');
+                regexHelper.value(document.querySelector('#subject'), '서브젝트를 입력하세요.');
+                regexHelper.value(document.querySelector('#comment'), '코멘트를 입력하세요.');
+            } catch (e) {
+                alert(e.message);
+                console.error(e);
+                e.selector.focus();
+                return;
+            }
+            alert("입력 완료!");
+        });
+    </script>
+</body>
+</html>
