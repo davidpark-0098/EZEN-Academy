@@ -1,41 +1,107 @@
-import React from 'react'
-import styled from 'styled-components';
-import useAxios from 'axios-hooks';
+import React, { useState, useCallback, memo, useEffect } from "react";
+import styled from "styled-components";
+import useAxios from "axios-hooks";
 
-import Spinner from '../components/Spinner';
-import Table from '../components/Table';
+import Spinner from "../components/Spinner";
+import Table from "../components/Table";
+import useMountedRef from "../hooks/useMountedRef";
 
 const ColorText = styled.span`
   &:before {
-    color: ${({sex}) => sex === 'male' ? '#06f' : '#c0c'};
-    content: '${({sex}) => sex === 'male' ? '남자' : '여자'}';
+    color: ${({ sex }) => (sex === "male" ? "#06f" : "#c0c")};
+    content: "${({ sex }) => (sex === "male" ? "남자" : "여자")}";
     font-weight: 600;
   }
 `;
 
 const EmbarkedBox = styled.span`
   &:before {
-    color: ${({embarked}) => embarked === "C" ? '#f60' : (embarked === 'Q' ? '#00f' : '#990')};
-    content: '${({embarked}) => embarked === "C" ? '셰르부르' : (embarked === 'Q' ? '퀸스타운' : '사우샘프턴')}';
+    color: ${({ embarked }) => (embarked === "C" ? "#f60" : embarked === "Q" ? "#00f" : "#990")};
+    content: "${({ embarked }) => (embarked === "C" ? "셰르부르" : embarked === "Q" ? "퀸스타운" : "사우샘프턴")}";
     font-weight: 600;
   }
 `;
 
 const SurvivedBox = styled.span`
   &:before {
-    background-color: ${({survived}) => survived ? '#090' : '#e00'};
-    content: '${({survived}) => survived ? '생존' : '사망'}';
+    background-color: ${({ survived }) => (survived ? "#090" : "#e00")};
+    content: "${({ survived }) => (survived ? "생존" : "사망")}";
     color: #fff;
     font-weight: 600;
-    
+  }
+`;
+
+const SelectContainer = styled.div`
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+  margin: 0;
+
+  select {
+    margin-right: 15px;
+    font-size: 16px;
+    padding: 5px 10px;
   }
 `;
 
 const URL = "http://localhost:3001/titanic";
 
 const Titanic = () => {
-
   const [{ data, loading, error }, refetch] = useAxios(URL);
+
+  const [state, setState] = useState({
+    sex: "",
+    embarked: "",
+    survived: ""
+  });
+
+  const mountedRef = useMountedRef();
+
+  useEffect(() => {
+    if (mountedRef.current) {
+      const params = {};
+      for (const key in state) {
+        if (state[key]) {
+          params[key] = state[key];
+        }
+      }
+      refetch({
+        params: params
+      });
+    }
+  }, [mountedRef, refetch, state]);
+
+  const onSelectChange = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      const current = e.target;
+      const key = current.name;
+      const value = current[current.selectedIndex].value;
+
+      // 기존의 상태값을 그대로 복사한 상태에서
+      // 드롭다운의 name속성과 일치하는 key에 대한 value를 수정
+      const newState = { ...state, [key]: value };
+
+      setState(newState);
+
+      console.log(newState);
+    },
+    [state]
+  );
+
+  // 콜백 스타일의 경우 현재 상태값이 복사된 파라미터가 콜백으로 전달된다.
+  // setState(newState => {
+  //   newState[key] = value;
+
+  //   console.log(newState);
+
+  //   return newState;
+  // });
+  // }, []);
 
   if (error) {
     console.error(error);
@@ -46,12 +112,31 @@ const Titanic = () => {
         <hr />
         <p>{error.message}</p>
       </div>
-    )
+    );
   }
 
   return (
     <div>
       <Spinner loading={loading} />
+
+      <SelectContainer>
+        <select name="sex" onChange={onSelectChange}>
+          <option value="">-- 성별 선택 --</option>
+          <option value="male">남자</option>
+          <option value="female">여자</option>
+        </select>
+        <select name="embarked" onChange={onSelectChange}>
+          <option value="">-- 탑승지 선택 --</option>
+          <option value="C">셰르브루</option>
+          <option value="Q">퀸즈타운</option>
+          <option value="S">사우샘프턴</option>
+        </select>
+        <select name="survived" onChange={onSelectChange}>
+          <option value="">-- 생존여부 선택 --</option>
+          <option value="true">생존</option>
+          <option value="false">사망</option>
+        </select>
+      </SelectContainer>
 
       <Table>
         <thead>
@@ -70,29 +155,34 @@ const Titanic = () => {
           </tr>
         </thead>
         <tbody>
-          {data && data.map(({
-            id, name, survived, pclass, sex, age, sibsp, parch, ticket, fare, cabin, embarked
-          }, i) => {
-            return (
-              <tr key={id}>
-                <td>{id}</td>
-                <td>{name}</td>
-                <td><ColorText sex={sex} /></td>
-                <td>{age}</td>
-                <td>{sibsp + parch}</td>
-                <td>{pclass}</td>
-                <td>{cabin}</td>
-                <td>{ticket}</td>
-                <td>{fare}</td>
-                <td><EmbarkedBox embarked={embarked} /></td>
-                <td><SurvivedBox survived={survived} /></td>
-              </tr>
-            );
-          })}
+          {data &&
+            data.map(({ id, name, survived, pclass, sex, age, sibsp, parch, ticket, fare, cabin, embarked }, i) => {
+              return (
+                <tr key={id}>
+                  <td>{id}</td>
+                  <td>{name}</td>
+                  <td>
+                    <ColorText sex={sex} />
+                  </td>
+                  <td>{age}</td>
+                  <td>{sibsp + parch}</td>
+                  <td>{pclass}</td>
+                  <td>{cabin}</td>
+                  <td>{ticket}</td>
+                  <td>{fare}</td>
+                  <td>
+                    <EmbarkedBox embarked={embarked} />
+                  </td>
+                  <td>
+                    <SurvivedBox survived={survived} />
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </Table>
     </div>
   );
 };
 
-export default React.memo(Titanic);
+export default memo(Titanic);
