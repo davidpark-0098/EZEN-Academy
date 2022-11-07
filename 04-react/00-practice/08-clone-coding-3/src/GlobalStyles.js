@@ -19,10 +19,6 @@ const GlobalStyles = createGlobalStyle`
         border-top: 1px solid #eee;
         margin: 20px auto;
     }
-
-    /* $line: #eee;
-    $choose: #ccc;
-    $notchoose: #616161; */
 `;
 
 export default GlobalStyles;

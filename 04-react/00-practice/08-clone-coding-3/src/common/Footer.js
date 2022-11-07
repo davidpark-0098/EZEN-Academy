@@ -16,7 +16,7 @@ const FooterContainer = styled.footer`
     ${mq.maxWidth("sm")`
     flex-direction: column;
     `}
-    
+
     article {
       width: 33.3%;
       padding: 0 8px;

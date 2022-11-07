@@ -8,9 +8,9 @@ import GlobalStyles from "./GlobalStyles";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <BrowserRouter>
-        <Meta />
-        <GlobalStyles />
-        <App />
-    </BrowserRouter>
+  <BrowserRouter>
+    <Meta />
+    <GlobalStyles />
+    <App />
+  </BrowserRouter>
 );
