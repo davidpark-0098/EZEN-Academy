@@ -13,13 +13,18 @@ const FooterContainer = styled.footer`
     display: flex;
     padding: 32px 8px;
 
-    ${mq.maxWidth('sm')`
+    ${mq.maxWidth("sm")`
     flex-direction: column;
     `}
+    
     article {
       width: 33.3%;
       padding: 0 8px;
       box-sizing: border-box;
+
+      ${mq.maxWidth("sm")`
+        width: 100%;
+      `}
 
       h1 {
         display: inline-block;
