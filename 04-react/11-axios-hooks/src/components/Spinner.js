@@ -3,37 +3,39 @@ import PropTypes from "prop-types";
 
 import { MagnifyingGlass } from "react-loader-spinner";
 
-const Spinner = memo(({ loading, width, height, color, glassColor }) => {
-    return <MagnifyingGlass
-    visible={loading}
-    height={height}
-    width={width}
-    ariaLabel="MagnifyingGlass-loading"
-    wrapperStyle={{
-        position: 'absolute',
+const Spinner = memo(({ visible, width, height, color, glassColor }) => {
+  return (
+    <MagnifyingGlass
+      visible={visible}
+      height={height}
+      width={width}
+      ariaLabel="MagnifyingGlass-loading"
+      wrapperStyle={{
+        position: "absolute",
         zIndex: 1000,
-        left: '50%',
-        top: '50%',
-        trasform: 'translate(-50%, -50%)',
-    }}
-    wrapperClass="MagnifyingGlass-wrapper"
-    glassColor = {glassColor}
-    color = {color}
-  />
+        left: "50%",
+        top: "50%",
+        trasform: "translate(-50%, -50%)"
+      }}
+      wrapperClass="MagnifyingGlass-wrapper"
+      glassColor={glassColor}
+      color={color}
+    />
+  );
 });
 
 Spinner.defaultProps = {
-    visible: true,
-    height: 80,
-    width: 80,
-    glassColor: '#c0efff',
-    color: '#e15b64',
+  visible: true,
+  height: 80,
+  width: 80,
+  glassColor: "#c0efff",
+  color: "#e15b64"
 };
 
 Spinner.propTypes = {
-    visible: PropTypes.bool.isRequired,
-    width: PropTypes.number,
-    height: PropTypes.number,
+  visible: PropTypes.bool.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number
 };
 
 export default Spinner;

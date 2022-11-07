@@ -117,7 +117,7 @@ const Titanic = () => {
 
   return (
     <div>
-      <Spinner loading={loading} />
+      <Spinner visible={loading} />
 
       <SelectContainer>
         <select name="sex" onChange={onSelectChange}>
