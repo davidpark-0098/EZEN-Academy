@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState, memo } from "react";
 import useAxios from "axios-hooks";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
@@ -40,13 +40,13 @@ const TableEx = styled(Table)`
   }
 `;
 
-const GradeEdit = () => {
+const ProfessorEdit = memo(() => {
   const { id } = useParams();
-
-  // 페이지 강제 이동
   const navigate = useNavigate();
 
-  const [{ data, loading, error }, refetch] = useAxios(`http://localhost:3001/grade/${id}`);
+  const [{ data, loading, error }, refetch] = useAxios(`http://localhost:3001/professor/${id}`, {
+    useCache: false
+  });
 
   const onSubmit = useCallback(
     (e) => {
@@ -55,27 +55,27 @@ const GradeEdit = () => {
       const current = e.target;
 
       const name = current.name.value;
-      const level = current.level.value;
-      const sex = current.sex.value;
-      const kor = current.kor.value;
-      const eng = current.eng.value;
-      const math = current.math.value;
-      const sin = current.sin.value;
+      const userid = current.userid.value;
+      const position = current.position.value;
+      const sal = current.sal.value;
+      const hiredate = current.hiredate.value;
+      const comm = current.comm.value;
+      const deptno = current.deptno.value;
 
       let json = null;
 
       (async () => {
         try {
           const response = await refetch({
-            method: 'PUT',
+            method: "PUT",
             data: {
               name: name,
-              level: parseInt(level),
-              sex: sex,
-              kor: parseInt(kor),
-              eng: parseInt(eng),
-              math: parseInt(math),
-              sin: parseInt(sin)
+              userid: userid,
+              position: position,
+              sal: parseInt(sal),
+              hiredate: hiredate,
+              comm: parseInt(comm),
+              deptno: parseInt(deptno)
             }
           });
 
@@ -88,16 +88,18 @@ const GradeEdit = () => {
         if (json !== null) {
           window.alert("저장되었습니다.");
           navigate("/");
-
-          // 상세 페이지가 존재한다면 아래와 같이 생성된 id값을 활용해야 한다.
-          // navigate(`/read/${json.id}`);
-          // or
-          // navigate(`/read/?contentId=${json.id}`);
         }
       })();
     },
     [refetch, navigate]
   );
+
+  const [department, setDepartment] = useState([]);
+  const [{ data: departmentData }, departmentRefetch] = useAxios("/department");
+
+  useEffect(() => {
+    setDepartment(departmentData);
+  }, [departmentData]);
 
   return (
     <>
@@ -125,52 +127,64 @@ const GradeEdit = () => {
                   </td>
                 </tr>
                 <tr>
-                  <th>학년</th>
+                  <th>아이디</th>
                   <td className="inputWrapper">
-                    <select name="level" className="field" defaultValue={data.level}>
-                      <option value="">---- 선택하세요 ----</option>
-                      <option value="1">1학년</option>
-                      <option value="2">2학년</option>
-                      <option value="3">3학년</option>
-                      <option value="4">4학년</option>
+                    <input className="field" type="text" name="userid" defaultValue={data.userid} />
+                  </td>
+                </tr>
+                <tr>
+                  <th>직급</th>
+                  <td className="inputWrapper">
+                    <label>
+                      <input type="radio" name="position" value="교수" defaultChecked={data.position === "교수"} />
+                      교수
+                    </label>
+                    <label>
+                      <input type="radio" name="position" value="부교수" defaultChecked={data.position === "부교수"} />
+                      부교수
+                    </label>
+                    <label>
+                      <input type="radio" name="position" value="조교수" defaultChecked={data.position === "조교수"} />
+                      조교수
+                    </label>
+                    <label>
+                      <input type="radio" name="position" value="전임강사" defaultChecked={data.position === "전임강사"} />
+                      전임강사
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <th>급여</th>
+                  <td className="inputWrapper">
+                    <input className="field" type="text" name="sal" placeholder="숫자 입력 (만원)" defaultValue={data.sal} />
+                  </td>
+                </tr>
+                <tr>
+                  <th>입사일</th>
+                  <td className="inputWrapper">
+                    <input className="field" type="date" name="hiredate" defaultValue={data.hiredate} />
+                  </td>
+                </tr>
+                <tr>
+                  <th>보직수당</th>
+                  <td className="inputWrapper">
+                    <input className="field" type="text" name="comm" placeholder="숫자 입력 (만원)" defaultValue={data.comm} />
+                  </td>
+                </tr>
+                <tr>
+                  <th>소속학과</th>
+                  <td className="inputWrapper">
+                    <select name="deptno" className="field" defaultValue={data.deptno}>
+                      <option value="">--- 선택하세요 ---</option>
+                      {department &&
+                        department.map(({ id, dname }, i) => {
+                          return (
+                            <option key={id} value={id}>
+                              {dname}
+                            </option>
+                          );
+                        })}
                     </select>
-                  </td>
-                </tr>
-                <tr>
-                  <th>성별</th>
-                  <td className="inputWrapper">
-                    <label>
-                      <input type="radio" name="sex" value='남자' defaultChecked={data.sex === '남자'} />
-                      남자
-                    </label>
-                    <label>
-                      <input type="radio" name="sex" value='여자' defaultChecked={data.sex === '여자'} />
-                      여자
-                    </label>
-                  </td>
-                </tr>
-                <tr>
-                  <th>국어</th>
-                  <td className="inputWrapper">
-                    <input type="number" className="field" name="kor" placeholder="숫자만 입력 (0~100)" defaultValue={data.kor} />
-                  </td>
-                </tr>
-                <tr>
-                  <th>영어</th>
-                  <td className="inputWrapper">
-                    <input type="number" className="field" name="eng" placeholder="숫자만 입력 (0~100)" defaultValue={data.eng} />
-                  </td>
-                </tr>
-                <tr>
-                  <th>수학</th>
-                  <td className="inputWrapper">
-                    <input type="number" className="field" name="math" placeholder="숫자만 입력 (0~100)" defaultValue={data.math} />
-                  </td>
-                </tr>
-                <tr>
-                  <th>과학</th>
-                  <td className="inputWrapper">
-                    <input type="number" className="field" name="sin" placeholder="숫자만 입력 (0~100)" defaultValue={data.sin} />
                   </td>
                 </tr>
               </tbody>
@@ -184,6 +198,6 @@ const GradeEdit = () => {
       )}
     </>
   );
-};
+});
 
-export default GradeEdit;
+export default ProfessorEdit;

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import GradeList from "./pages/GradeList";
@@ -12,8 +12,8 @@ function App() {
 
       <Routes>
         <Route path="/" exapt={true} element={<GradeList />} />
-        <Route path="/add" exapt={true} element={<GradeAdd />} />
-        <Route path="/edit/" exapt={true} element={<GradeEdit />} />
+        <Route path="/add" element={<GradeAdd />} />
+        <Route path="/edit/:id" element={<GradeEdit />} />
       </Routes>
     </div>
   );
