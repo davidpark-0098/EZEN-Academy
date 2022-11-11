@@ -1,0 +1,417 @@
+/**
+ * @ File Name: style.scss
+ * @ Author: david park (daxxx2030@gail.com)
+ * @ Last Update: 2022-09-23 19:33:00
+ * @ Description: 스타일시트
+ */
+@charset "utf-8";
+
+@import "./reset.scss";
+@import "./responsive.scss";
+@import "./common.scss";
+@import "./colors.scss";
+
+// 팝업
+#popup {
+    display: none;
+    // 팝업 배경
+    #popup_bg {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 4000;
+    }
+    // 팝업 양식
+    #popup_wrap {
+        width: 600px;
+        height: auto;
+        padding: 32px 48px;
+        box-sizing: border-box;
+        position: fixed;
+        left: 50%;
+        top: calc(50% - 90px);
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 40px -20px black;
+        background-color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        border-radius: 5px;
+        z-index: 5000;
+        // 제목
+        h1 {
+            font-size: 36px;
+            line-height: 54px;
+            letter-spacing: 4px;
+        }
+        p {
+            line-height: 30px;
+        }
+        form {
+            width: 100%;
+            input {
+                width: 100%;
+                height: 40px;
+                padding: 8px;
+                border: 1px solid $my;
+                box-sizing: border-box;
+            }
+            // 팝업 양식 버튼
+            #btn_group {
+                display: flex;
+                flex-wrap: wrap;
+                button {
+                    width: 50%;
+                    height: 38px;
+                    font-size: 15px;
+                    border: none;
+                    padding: 8px 16px;
+                    color: rgba(255, 255, 255, 0.9);
+                }
+                #submit {
+                    background-color: #4caf50;
+                }
+                #out {
+                    background-color: #f44336;
+                }
+            }
+            p {
+                i {
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}
+
+// 화면 하단 nav
+nav {
+    width: 100%;
+    height: 56px;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    opacity: 0.6;
+    z-index: 5000;
+    // nav 가로 정렬
+    ul {
+        display: flex;
+        // nav 상자
+        li{
+            width: 25%;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            // a태그 블록
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            // nav a 마우스 호버시 효과
+            a:hover {
+                background-color: $my;
+            }
+        }
+    }
+}
+// nav 마우스 호버시 효과
+nav:hover {
+    opacity: 8;
+}
+
+// header
+header {
+    // vh 화면기준 영역
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    // header 가운데 제목
+    article {
+        display: block;
+        text-align: center;
+        color: white;
+        letter-spacing: 4px;
+        line-height: 45px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // 제목 설정
+        h1 {
+            line-height: 96px;
+        }
+    }
+}
+// header 배경이미지
+.bg_img {
+background: url(https://www.w3schools.com/w3images/wedding_couple.jpg) center no-repeat;
+background-size: cover;
+filter: grayscale(50%);
+}
+
+// section의 공통 적용
+.section_box {
+    width: 100%;
+    background-color: $section;
+    padding: 64px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+// wrap
+#wrap {
+    width: 100%;
+    // main
+    main {
+        width: 100%;
+        // jane_john section
+        #jane_john {
+            // jane_john 제목, 이미지, 텍스트
+            h1 {
+                color: $gray;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                line-height: 54px;
+                b {
+                    font-size: 36px;
+                }
+            }
+            #main_img_1 {
+                max-width: 100%;
+                display: block;
+                object-fit: cover;
+                filter: grayscale(75%);
+                margin: 32px 0;
+                border-radius: 5px;
+            }
+            p {
+                max-width: 900px;
+                font-style: italic;
+                line-height: 30px;
+            }
+            // 버튼 영역
+            #wd_btn {
+                height: 60px;
+                margin-top: 30px;
+                // 버튼 스타일
+                a {
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    padding: 12px 24px;
+                    box-sizing: border-box;
+                    font-size: 18px;
+                    text-align: center;
+                    line-height: 36px;
+                    border-radius: 5px;
+                    background-color: black;
+                    color: white;
+                }
+                // 버튼에 마우스 호버시 효과
+                a:hover {
+                    background-color: $my;
+                    color: black;
+                }
+            }
+        }
+        // You_Are_Invited section
+        #You_Are_Invited {
+            height: 100vh;
+            background-image: url(https://www.w3schools.com/w3images/flowers.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            // 제목과 텍스트
+            #title_text_wrap {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                // 제목, 텍스트 높이
+                h1, h2 {
+                    line-height: 96px;
+                }
+            }
+        }
+
+        // the_wedding section
+        #the_wedding {
+            text-align: center;
+            // 제목
+            b {
+            display: inline-block;
+            margin: 10px 0;
+            font-size: 36px;
+            color: $gray;
+            }
+            // 이미지
+            #main_img_2 {
+                max-width: 100%;
+                object-fit: cover;
+                margin: 64px 0;
+                border-radius: 5px;
+                filter: grayscale(75%);
+            }
+            // 이미지 밑 텍스트 상자
+            #when_where_wrap {
+                width: 900px;
+                display: flex;
+                justify-content: space-evenly;
+                flex-wrap: wrap;
+                // 각 텍스트 상자
+                .when_where {
+                    margin: 0 39px;
+                    // 제목과 텍스트 크기 위치 조정
+                    h1 {
+                        font-size: 30px;
+                    }
+                    p {
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// rsvp
+#rsvp {
+    background-color: $pink;
+    text-align: center;
+    letter-spacing: 4px;
+    // 내용
+    h1 {
+        font-size: 36px;
+        line-height: 54px;
+    }
+    p {
+        font-size: 18px;
+        margin: 18px 0;
+        line-height: 36px;
+    }
+    // 버튼
+    #rsvp_btn {
+    height: 64px;
+    margin: 24px 0;
+        a {
+            font-size: 24px;
+            display: inline-block;
+            padding: 8px 60px;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 48px;
+            border-radius: 5px;
+            background-color: $red;
+            color: white;
+            letter-spacing: 0;
+        }
+        // 버튼 호버시 효과
+        a:hover {
+            background-color: $my;
+            color: black;
+        }
+    }
+}
+
+// footer
+footer {
+    width: 100%;
+    height: 92px;
+    padding: 16px 0;
+    text-align: center;
+    background-color: black;
+    color: white;
+    // 텍스트
+    p {
+        font-size: 15px;
+        margin: 15px 0;
+        // 사이트 링크
+        a {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+}
+
+// 반응형 웹페이지
+@include mobile {
+    // 팝업 반응형
+    #popup {
+        // 팝업과 버튼 크기 변경
+        #popup_wrap {
+            width: 90%;
+            height: auto;
+            form {
+                #btn_group {
+                    button {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    // 모바일 버전 nav 없음
+    nav {
+        display: none;
+    }
+    // 메인
+    #wrap{
+        main {
+            // the_wedding 하단 텍스트 반응형
+            #the_wedding {
+                #when_where_wrap {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    // footer p 상하정렬
+    footer {
+        box-sizing: border-box;
+        // 텍스트
+        p {
+            line-height: 60px;
+            font-size: 15px;
+            margin: 0 0;
+        }
+    }
+}
+
+@include tablet {
+    // 팝업 반응형
+    #popup {
+        // 팝업과 버튼 크기 변경
+        #popup_wrap {
+            width: 500px;
+            padding: 32px;
+            // 버튼 크기 반응형
+            form {
+                #btn_group {
+                    button {
+                        width: 218px;
+                    }
+                }
+            }
+        }
+    }
+    // 메인
+    #wrap{
+        main {
+            // the_wedding 하단 텍스트 반응형
+            #the_wedding {
+                #when_where_wrap {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

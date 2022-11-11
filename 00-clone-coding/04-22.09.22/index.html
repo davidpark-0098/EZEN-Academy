@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jane & John</title>
+    <link rel="stylesheet" href="./assets/css/style.min.css">
+</head>
+<body>
+    <div id="popup">
+        <div id="popup_bg"></div>
+        <div id="popup_wrap">
+            <h1>CAN YOU COME?</h1>
+            <p>We really hope you can make it.</p>
+            <form id="invite">
+                <input type="text" placeholder="Name(s)" id="name">
+                <p><i>Sincerely, John & Jane</i></p>
+                <div id="btn_group">
+                    <button id="submit" type="submit">Going</button>
+                    <button id="out" type="button">Can't come</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#jane_john">Jane & John</a></li>
+            <li><a href="#the_wedding">Wedding</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="bg_img">
+        <article>
+            <h1>Jane & John</h1>
+            <h2>Are getting married</h2>
+            <h2>
+                <b>17.07.2017</b>
+            </h2>
+        </article>
+    </header>
+
+    <div id="wrap">
+        <main>
+            <section id="jane_john" class="section_box">
+                    <h1><b>Jane & John</b></h1>
+                    <img id="main_img_1" src="https://www.w3schools.com/w3images/wedding_couple2.jpg" alt="Jane & John image">
+                    <p>You all know us. And we all know you. We are getting married lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div id="wd_btn"><a href="#">Wedding Details</a></div>
+            </section>
+            <section id="You_Are_Invited">
+                <div id="title_text_wrap">
+                    <h1>You Are Invited</h1>
+                    <h2>Of course..</h2>
+                </div>
+            </section>
+            <section id="the_wedding" class="section_box">
+                    <b>THE WEDDING</b>
+                    <img id="main_img_2" src="https://www.w3schools.com/w3images/wedding_location.jpg" alt="THE WEDDING image">
+                    <div id="when_where_wrap">
+                        <article class="when_where">
+                            <h1>When</h1>
+                            <p>Wedding Ceremony - 2:00pm</p>
+                            <p>Reception & Dinner - 5:00pm</p>
+                        </article>
+                        <article class="when_where">
+                            <h1>Where</h1>
+                            <p>Some place, an address</p>
+                            <p>Some where, some address</p>
+                        </article>
+                    </div>
+            </section>
+        </main>
+
+        <section id="rsvp" class="section_box">
+            <h1>HOPE YOU CAN MAKE IT!</h1>
+            <p>Kindly Respond By January, 2017</p>
+            <div id="rsvp_btn"><a href="#" id="RSVP">RSVP</a></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer>
+
+    <script type="module">
+        import click from './assets/js/common.js';
+        click.send();
+        click.out();
+        click.rsvp();
+    </script>
+</body>
+</html>
