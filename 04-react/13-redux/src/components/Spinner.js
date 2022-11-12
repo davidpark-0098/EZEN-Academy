@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 
 import { MagnifyingGlass } from "react-loader-spinner";
 
-const Spinner = memo(({ visible, width, height, color, glassColor }) => {
+const Spinner = memo(({ loading, width, height, color, glassColor }) => {
   return (
     <MagnifyingGlass
-      visible={visible}
+      visible={loading}
       height={height}
       width={width}
       ariaLabel="MagnifyingGlass-loading"
       wrapperStyle={{
-        position: "absolute",
+        position: "fixed",
         zIndex: 1000,
         left: "50%",
         top: "50%",
