@@ -28,8 +28,8 @@ Spinner.defaultProps = {
   visible: true,
   height: 80,
   width: 80,
-  glassColor: "#c0efff",
-  color: "#e15b64"
+  glassColor: "white",
+  color: "black"
 };
 
 Spinner.propTypes = {
