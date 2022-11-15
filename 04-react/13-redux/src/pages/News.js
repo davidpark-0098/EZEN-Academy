@@ -18,7 +18,7 @@ const News = memo(() => {
 
   return (
     <div>
-      <Spinner visible={loading} />
+      <Spinner loading={loading} />
       {error ? <ErrorView error={error} /> : data && <NewsList news={data} />}
     </div>
   );

@@ -18,7 +18,7 @@ const Department = memo(() => {
 
   return (
     <div>
-      <Spinner visible={loading} />
+      <Spinner loading={loading} />
       {error ? (
         <ErrorView error={error} />
       ) : (

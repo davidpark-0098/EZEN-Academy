@@ -1,4 +1,4 @@
-yarn startimport React, { memo, useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getList, getItem, postItem, putItem, deleteItem } from "./slices/DepartmentSlice";

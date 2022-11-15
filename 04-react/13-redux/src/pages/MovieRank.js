@@ -67,7 +67,7 @@ const MovieRank = memo(() => {
 
   return (
     <div>
-      <Spinner visible={loading} />
+      <Spinner loading={loading} />
 
       <form>
         <input type="date" className="form-control" placeholder="날짜 선택" value={targetDt} onChange={onDateChange} />
