@@ -6,15 +6,15 @@ import { cloneDeep } from "lodash";
 import { pending, fulfilled, rejected } from "../helper/ReduxHelper";
 
 // 다중행 데이터 조회를 위한 비동기 함수
-export const getList = createAsyncThunk("DepartmentSlice/getList", async (payload, { rejectWithValue }) => {
+export const getList = createAsyncThunk("TrafficAccSlice/getList", async (payload, { rejectWithValue }) => {
   let result = null;
-  const URL = process.env.REACT_APP_API_DEPARTMENT_LIST;
+  const URL = process.env.REACT_APP_API_TRAFFIC_ACC_LIST;
 
   let params = null;
 
   if (payload?.keyword) {
     params = {
-      dname: payload.keyword
+      accident: payload.keyword
     };
   }
 
@@ -30,9 +30,9 @@ export const getList = createAsyncThunk("DepartmentSlice/getList", async (payloa
 });
 
 // 단일행 데이터 조회를 위한 비동기 함수
-export const getItem = createAsyncThunk("DepartmentSlice/getItem", async (payload, { rejectWithValue }) => {
+export const getItem = createAsyncThunk("TrafficAccSlice/getItem", async (payload, { rejectWithValue }) => {
   let result = null;
-  const URL = process.env.REACT_APP_API_DEPARTMENT_ITEM.replace(":id", payload.id);
+  const URL = process.env.REACT_APP_API_TRAFFIC_ACC_ITEM.replace(":id", payload.id);
 
   try {
     const response = await axios.get(URL);
@@ -44,14 +44,17 @@ export const getItem = createAsyncThunk("DepartmentSlice/getItem", async (payloa
 });
 
 // 데이터 저장을 위한 비동기 함수
-export const postItem = createAsyncThunk("DepartmentSlice/postItem", async (payload, { rejectWithValue }) => {
+export const postItem = createAsyncThunk("TrafficAccSlice/postItem", async (payload, { rejectWithValue }) => {
   let result = null;
-  const URL = process.env.REACT_APP_API_DEPARTMENT_LIST;
+  const URL = process.env.REACT_APP_API_TRAFFIC_ACC_LIST;
 
   try {
     const response = await axios.post(URL, {
-      dname: payload.dname,
-      loc: payload.loc
+      year: payload.year,
+      month: payload.month,
+      accident: payload.accident,
+      death: payload.death,
+      injury: payload.injury
     });
     result = response.data;
   } catch (err) {
@@ -61,14 +64,17 @@ export const postItem = createAsyncThunk("DepartmentSlice/postItem", async (payl
 });
 
 // 데이터 수정을 위한 비동기 함수
-export const putItem = createAsyncThunk("DepartmentSlice/putItem", async (payload, { rejectWithValue }) => {
+export const putItem = createAsyncThunk("TrafficAccSlice/putItem", async (payload, { rejectWithValue }) => {
   let result = null;
-  const URL = process.env.REACT_APP_API_DEPARTMENT_ITEM.replace(":id", payload.id);
+  const URL = process.env.REACT_APP_API_TRAFFIC_ACC_ITEM.replace(":id", payload.id);
 
   try {
     const response = await axios.put(URL, {
-      dname: payload.dname,
-      loc: payload.loc
+      year: payload.year,
+      month: payload.month,
+      accident: payload.accident,
+      death: payload.death,
+      injury: payload.injury
     });
     result = response.data;
   } catch (err) {
@@ -78,9 +84,9 @@ export const putItem = createAsyncThunk("DepartmentSlice/putItem", async (payloa
 });
 
 // 데이터 삭제를 위한 비동기 함수
-export const deleteItem = createAsyncThunk("DepartmentSlice/deleteItem", async (payload, { rejectWithValue }) => {
+export const deleteItem = createAsyncThunk("TrafficAccSlice/deleteItem", async (payload, { rejectWithValue }) => {
   let result = null;
-  const URL = process.env.REACT_APP_API_DEPARTMENT_ITEM.replace(":id", payload.id);
+  const URL = process.env.REACT_APP_API_TRAFFIC_ACC_ITEM.replace(":id", payload.id);
 
   try {
     const response = await axios.delete(URL);
@@ -91,8 +97,8 @@ export const deleteItem = createAsyncThunk("DepartmentSlice/deleteItem", async (
   return result;
 });
 
-const DepartmentSlice = createSlice({
-  name: "DepartmentSlice",
+const TrafficAccSlice = createSlice({
+  name: "TrafficAccSlice",
   initialState: {
     data: null,
     loading: false,
@@ -181,5 +187,5 @@ const DepartmentSlice = createSlice({
   }
 });
 
-export const { getCurrentData } = DepartmentSlice.actions;
-export default DepartmentSlice.reducer;
+export const { getCurrentData } = TrafficAccSlice.actions;
+export default TrafficAccSlice.reducer;

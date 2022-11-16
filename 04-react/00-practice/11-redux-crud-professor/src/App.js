@@ -13,11 +13,7 @@ import ProfessorEdit from "./pages/ProfessorEdit";
 const App = memo(() => {
   return (
     <div>
-      <h1>Redux-CRUD</h1>
-      <MenuLink to="/">Professor</MenuLink>
-      <MenuLink to="/">Student</MenuLink>
-      <MenuLink to="/">Grade</MenuLink>
-      <hr />
+      <h1>Redux-CRUD-Professor</h1>
       <Routes>
         <Route path="/" exapt={true} element={<ProfessorList />} />
         <Route path="/professor_add" element={<ProfessorAdd />} />

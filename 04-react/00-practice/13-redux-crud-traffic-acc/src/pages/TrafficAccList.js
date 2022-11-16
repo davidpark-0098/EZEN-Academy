@@ -2,7 +2,6 @@ import React, { memo, useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import dayjs from "dayjs";
 
 // components
 import Spinner from "../components/Spinner";
@@ -13,7 +12,7 @@ import Table from "../components/Table";
 import { useQueryString } from "../hooks/useQueryString";
 
 // slice
-import { getList, deleteItem } from "../slices/ProfessorSlice";
+import { getList, deleteItem } from "../slices/TrafficAccSlice";
 
 const ControlContainer = styled.form`
   position: sticky;
@@ -51,13 +50,13 @@ const Button = styled.button`
   margin-right: 10px;
 `;
 
-const ProfessorList = memo(() => {
+const TrafficAccList = memo(() => {
   /** queryString 변수 받기 */
   const { keyword } = useQueryString();
 
   /** 리덕스 관련 초기화 */
   const dispatch = useDispatch();
-  const { data, loading, error } = useSelector((state) => state.ProfessorSlice);
+  const { data, loading, error } = useSelector((state) => state.TrafficAccSlice);
 
   /** 최초 마운트시 리덕스를 통해 목록을 조회한다. */
   useEffect(() => {
@@ -86,13 +85,13 @@ const ProfessorList = memo(() => {
   );
 
   /** 삭제 버튼에 대한 이벤트 리스너 */
-  const onProfessorItemDelete = useCallback((e) => {
+  const onTrafficAccItemDelete = useCallback((e) => {
     e.preventDefault();
 
     const current = e.currentTarget;
-    const { id, dname } = current.dataset;
+    const { id, accident } = current.dataset;
 
-    if (window.confirm(`정말 ${dname}(을)를 삭제하시겠습니까?`)) {
+    if (window.confirm(`정말 ${accident}(을)를 삭제하시겠습니까?`)) {
       dispatch(
         deleteItem({
           id: id
@@ -102,13 +101,13 @@ const ProfessorList = memo(() => {
   }, []);
 
   /** 수정 버튼에 대한 이벤트 리스너 */
-  const onProfessorEditClick = useCallback((e) => {
+  const onTrafficAccEditClick = useCallback((e) => {
     e.preventDefault();
 
     const current = e.currentTarget;
     const { id } = current.dataset;
 
-    navigate(`/professor_edit/${id}`);
+    navigate(`/traffic_acc_edit/${id}`);
   });
 
   return (
@@ -120,8 +119,8 @@ const ProfessorList = memo(() => {
         <button type="submit" className="controll clickable">
           검색
         </button>
-        <NavLink to="professor_add" className="controll clickable">
-          교수정보추가
+        <NavLink to="traffic_acc_add" className="controll clickable">
+          교통사고정보추가
         </NavLink>
       </ControlContainer>
 
@@ -133,36 +132,32 @@ const ProfessorList = memo(() => {
             <thead>
               <tr>
                 <th>id</th>
-                <th>name</th>
-                <th>userid</th>
-                <th>position</th>
-                <th>sal</th>
-                <th>hiredate</th>
-                <th>comm</th>
-                <th>deptno</th>
+                <th>year</th>
+                <th>month</th>
+                <th>accident</th>
+                <th>death</th>
+                <th>injury</th>
                 <th style={{ width: 150 + "px" }}>modify</th>
               </tr>
             </thead>
             <tbody>
               {data.length > 0 ? (
-                data.map(({id, name, userid, position, sal, hiredate, comm, deptno}, i) => {
+                data.map(({ id, year, month, accident, death, injury }, i) => {
                   return (
                     <tr key={id}>
                       <td>{id}</td>
+                      <td>{year}년</td>
+                      <td>{month}월</td>
                       <td>
-                        <NavLink to={`/Professor_view/${id}`}>{name}</NavLink>
+                        <NavLink to={`/traffic_acc_view/${id}`}>{accident}번</NavLink>
                       </td>
-                      <td>{userid}</td>
-                      <td>{position}</td>
-                      <td>{sal}만원</td>
-                      <td>{hiredate.slice(0, 10)}</td>
-                      <td>{comm ? `${comm}만원` : ""}</td>
-                      <td>{deptno}</td>
+                      <td>{death}명</td>
+                      <td>{injury}명</td>
                       <td>
-                        <Button className="button" type="button" data-id={id} onClick={onProfessorEditClick}>
+                        <Button className="button" type="button" data-id={id} onClick={onTrafficAccEditClick}>
                           수정
                         </Button>
-                        <button className="button" type="button" data-id={id} data-dname={name} onClick={onProfessorItemDelete}>
+                        <button className="button" type="button" data-id={id} data-accident={accident} onClick={onTrafficAccItemDelete}>
                           삭제
                         </button>
                       </td>
@@ -184,4 +179,4 @@ const ProfessorList = memo(() => {
   );
 });
 
-export default ProfessorList;
+export default TrafficAccList;
