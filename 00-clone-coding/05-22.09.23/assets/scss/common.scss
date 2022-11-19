@@ -1,0 +1,47 @@
+@charset "utf-8";
+
+@import "./variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Karma:wght@400;700&family=Nanum+Gothic:wght@400;700&family=Noto+Sans+KR:wght@300;400;700;900&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+body {
+    font-family: "Raleway", sans-serif;
+    font-weight: $w_n;
+    background-color: $bg_white;
+}
+img {
+    display: block;
+}
+h1 {
+    font-size: $h1;
+    margin: 10px 0;
+    line-height: 54px;
+}
+h2 {
+    font-size: $h2;
+    margin: 10px 0;
+    line-height: 45px;
+}
+h3 {
+    font-size: $h3;
+    margin: 10px 0;
+    line-height: 36px;
+}
+h4 {
+    font-size: $h4;
+    margin: 10px 0;
+    line-height: 30px;
+}
+p {
+    font-size: $f_m;
+    margin: 15px 0;
+    line-height: 23px;
+}
+b {
+    font-weight: $w_b;
+}
+hr {
+    margin: 20px 0;
+}
+a {
+    color: black;
+}
