@@ -11,8 +11,8 @@ const DepartmentPath = () => {
     console.groupEnd();
 
     console.group("파라미터 처리 결과 확인");
-    console.debug('요청된 학과번호 값=%s (%s)', params.id, typeof params.id);
-    console.debug('요청된 메시지 내용=%s (%s)', params.msg, typeof params.msg);
+    console.log('요청된 학과번호 값=%s (%s)', params.id, typeof params.id);
+    console.log('요청된 메시지 내용=%s (%s)', params.msg, typeof params.msg);
     console.groupEnd();
 
     const departmentList = {
